@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{17D7814B-329A-C22B-33A2-5C3AFA444333}</ProjectGuid>
+    <ProjectGuid>{A42B316B-BE6B-8258-A00F-63997B8866FD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>file_upload</RootNamespace>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>

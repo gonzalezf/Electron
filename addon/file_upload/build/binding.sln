@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "file_upload", "file_upload.vcxproj", "{17D7814B-329A-C22B-33A2-5C3AFA444333}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "file_upload", "file_upload.vcxproj", "{A42B316B-BE6B-8258-A00F-63997B8866FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,10 +8,10 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{17D7814B-329A-C22B-33A2-5C3AFA444333}.Debug|x64.ActiveCfg = Debug|x64
-		{17D7814B-329A-C22B-33A2-5C3AFA444333}.Debug|x64.Build.0 = Debug|x64
-		{17D7814B-329A-C22B-33A2-5C3AFA444333}.Release|x64.ActiveCfg = Release|x64
-		{17D7814B-329A-C22B-33A2-5C3AFA444333}.Release|x64.Build.0 = Release|x64
+		{A42B316B-BE6B-8258-A00F-63997B8866FD}.Debug|x64.ActiveCfg = Debug|x64
+		{A42B316B-BE6B-8258-A00F-63997B8866FD}.Debug|x64.Build.0 = Debug|x64
+		{A42B316B-BE6B-8258-A00F-63997B8866FD}.Release|x64.ActiveCfg = Release|x64
+		{A42B316B-BE6B-8258-A00F-63997B8866FD}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
