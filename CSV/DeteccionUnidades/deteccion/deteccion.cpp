@@ -11,11 +11,12 @@ using namespace std;
 #include <fstream>
 #include <string>
 #include <ctime>
+#include <typeinfo>
 int main()
 {
 
 	int start_s = clock();
-	std::ifstream  data("modelo_cp.csv");
+	std::ifstream  data("modelo_lp.csv");
 	std::string line;
 	int contador = 0;
 
@@ -25,11 +26,13 @@ int main()
 		std::string        cell;
 		contador += 1;
 
-		cout << "linea = " << contador <<" "<<  line << endl;
-		/*while (std::getline(lineStream, cell, ','))
+		//cout << "linea = " << contador <<" "<<  line << endl;
+		while (std::getline(lineStream, cell, ','))
 		{
+			// cell sera un atributo de la columna. Linea ha sido separada x coma 
 			//cout << cell << endl;
-		}*/
+			cout << typeid(cell).name() << endl; //Imprime tipo de dato
+		}
 	}
 
 	int stop_s = clock();
