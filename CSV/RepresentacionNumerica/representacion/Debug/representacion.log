@@ -1,19 +1,2 @@
-﻿  representacion.cpp
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(25): error C2039: 'deque': no es un miembro de 'std'
-  c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\json.hpp(12766): note: vea la declaración de 'std'
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(25): error C2065: 'deque': identificador no declarado
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(25): error C2275: 'record': uso no válido de este tipo como expresión
-  c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(24): note: vea la declaración de 'record'
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(25): error C2065: 'table': identificador no declarado
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(39): error C2065: 'table': identificador no declarado
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(39): error C2228: el operando izquierdo de '.emplace_back' debe tener class/struct/union
-  c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(39): note: el tipo es 'unknown-type'
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(49): error C2065: 'table': identificador no declarado
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(50): error C2065: 'table': identificador no declarado
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(50): error C2228: el operando izquierdo de '.size' debe tener class/struct/union
-  c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(50): note: el tipo es 'unknown-type'
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(53): error C2065: 'table': identificador no declarado
-c:\users\felipe\desktop\electron\csv\representacionnumerica\representacion\representacion.cpp(53): error C2228: el operando izquierdo de '.size' debe tener class/struct/union
-  bin
-c1xx : fatal error C1083: No se puede abrir el archivo código fuente: 'D:\visual_studio\VC\bin': No such file or directory
-  Generando código...
+﻿  representacion.vcxproj -> C:\Users\Felipe\Desktop\Electron\CSV\RepresentacionNumerica\representacion\Debug\representacion.exe
+  representacion.vcxproj -> C:\Users\Felipe\Desktop\Electron\CSV\RepresentacionNumerica\representacion\Debug\representacion.pdb (Full PDB)
