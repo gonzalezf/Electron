@@ -1,0 +1,21 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  unitsDeteccion.cpp
+..\..\unitsDeteccion\unitsDeteccion.cpp(33): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
+..\..\unitsDeteccion\unitsDeteccion.cpp(53): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
+..\..\unitsDeteccion\unitsDeteccion.cpp(64): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
+..\..\unitsDeteccion\unitsDeteccion.cpp(68): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
+..\..\unitsDeteccion\unitsDeteccion.cpp(74): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
+..\..\unitsDeteccion\unitsDeteccion.cpp(90): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
+  Generando código
+  5 of 1059 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    9 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+  main.vcxproj -> C:\Users\toby\Desktop\Electron\CSV\csv_formats\main\\..\release\main.exe
+  main.vcxproj -> C:\Users\toby\Desktop\Electron\CSV\csv_formats\main\\..\release\main.pdb (Full PDB)
