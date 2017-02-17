@@ -1,8 +1,0 @@
-﻿  Source.cpp
-c:\users\toby\desktop\unitdeteccion\unitdeteccion\source.cpp(15): warning C4474: "sscanf_s": se pasaron demasiados argumentos para la cadena de formato
-  c:\users\toby\desktop\unitdeteccion\unitdeteccion\source.cpp(15): note: los marcadores de posición y sus parámetros esperan 0 argumentos variádicos, pero se proporcionaron 1
-c:\users\toby\desktop\unitdeteccion\unitdeteccion\source.cpp(7): warning C4101: 'aux': variable local sin referencia
-c:\users\toby\desktop\unitdeteccion\unitdeteccion\source.cpp(7): warning C4101: 'c': variable local sin referencia
-c:\users\toby\desktop\unitdeteccion\unitdeteccion\source.cpp(6): warning C4101: 'str': variable local sin referencia
-  unitDeteccion.vcxproj -> C:\Users\toby\Desktop\unitDeteccion\Debug\unitDeteccion.exe
-  unitDeteccion.vcxproj -> C:\Users\toby\Desktop\unitDeteccion\Debug\unitDeteccion.pdb (Full PDB)
