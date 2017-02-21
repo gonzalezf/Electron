@@ -120,6 +120,19 @@ json AbreviarArchivo(string file_name, int cantidad_caracteres) {
 		abreviacion_header.push_back(abreviacion_final);
 	}
 
+	//Es posible que hasta este punto existan abreviaciones iguales, distinguir.
+
+	for (int i = 0; i < abreviacion_header.size(); i++) {
+		int cant_colisiones = 2; //parte de 2 x defecto
+		string var_actual = abreviacion_header[i];
+		for (int j = i + 1; j < abreviacion_header.size(); j++) {
+			if (var_actual.compare(abreviacion_header[j]) == 0) {
+				abreviacion_header[i] = abreviacion_header[i]+"1";
+				abreviacion_header[j] = abreviacion_header[j] + to_string(cant_colisiones);
+				cant_colisiones++;
+			}
+		}
+	}
 
 	file["headers"] = header_names;
 	file["abbrev"] = abreviacion_header;
