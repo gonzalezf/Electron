@@ -1,5 +1,3 @@
-// abreviacion.cpp: define el punto de entrada de la aplicación de consola.
-//
 
 #include <string.h>
 #include "stdafx.h"
@@ -32,7 +30,8 @@ bool replaceSubString(std::string& str, const std::string& from, const std::stri
 
 json AbreviarArchivo(string file_name, int cantidad_caracteres) {
 	int start_s = clock();
-
+	vector<string> header_names, abreviacion_header_temp, abreviacion_header;
+	json file;
 
 	std::ifstream  data(file_name + ".csv"); // Abrir archivo entrada
 	std::string line;
@@ -82,7 +81,9 @@ json AbreviarArchivo(string file_name, int cantidad_caracteres) {
 			while (std::getline(lineStream, cell, ',')) {
 				num_columnas += 1;
 				string nombre_item = cell.c_str();
-				cout << "Item leido  : " << nombre_item << endl;
+				//cout << "Item leido  : " << nombre_item << endl;
+
+				header_names.push_back(nombre_item.c_str());
 				for (std::multimap<string, string>::iterator it = diccionario.begin(); it != diccionario.end(); ++it) {
 					//std::cout << (*it).first << " => " << (*it).second << '\n'; // abreviacion sera it.first, palabras seras it.second
 					string key = (*it).first;
@@ -90,13 +91,15 @@ json AbreviarArchivo(string file_name, int cantidad_caracteres) {
 
 
 					if (nombre_item.find(word) != std::string::npos) { // chequear si word es un substring de nombre_item
-						std::cout << "found!" << nombre_item << " - " << word << endl;
+						//std::cout << "found!" << nombre_item << " - " << word << endl;
 						replaceSubString(nombre_item, word, key);
-						cout << "NOW WORD = "<<nombre_item<<endl;
+						//cout << "NOW WORD = "<<nombre_item<<endl;
 
 					}//fin for
 
 				}//fin while
+
+				abreviacion_header_temp.push_back(nombre_item); // en esta parte ya tiene algunas abreviaciones listas segun diccionario
 				ItemsColumnas.resize(num_columnas);
 
 			}
@@ -107,10 +110,32 @@ json AbreviarArchivo(string file_name, int cantidad_caracteres) {
 
 
 	//Crear archivo json, para respuesta
-	json j;
+
+	//No se debe exceder cierto numero de caracteres.
+
+
+	for (std::vector<string>::iterator it = abreviacion_header_temp.begin(); it != abreviacion_header_temp.end(); ++it) {
+		string abreviacion_final = *it;
+		abreviacion_final = abreviacion_final.substr(0, cantidad_caracteres);
+		abreviacion_header.push_back(abreviacion_final);
+	}
+
+
+	file["headers"] = header_names;
+	file["abbrev"] = abreviacion_header;
+
 	int stop_s = clock();
 	std::cout << "time: " << (stop_s - start_s) / double(CLOCKS_PER_SEC) * 1000 << endl;
-	return j;
+
+	
+	
+	ofstream myfile;
+	myfile.open("ejemplojson2.txt");
+	myfile << file;
+	myfile.close();
+
+
+	return file;
 }
 
 

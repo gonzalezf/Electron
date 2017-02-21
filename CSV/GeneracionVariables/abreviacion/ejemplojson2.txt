@@ -1,0 +1,1 @@
+{"abbrev":["x","y","z","cu","zm","or","cu","mo"],"headers":["xcentre","ycentre","zcentre","cobretotal_gc","zmin_gc","oretype_gc","cobresoluble_gc","mot_gc"]}
