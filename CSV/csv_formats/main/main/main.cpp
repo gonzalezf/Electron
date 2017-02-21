@@ -1,13 +1,19 @@
-#include "utilities.h"
-#include "unitsDeteccion.h"
 #include <chrono>
 #include <fstream>
+#include "utilities.h"
+#include "unitsDeteccion.h"
+#include "numericalRepresentation.h"
+#include "json.hpp"
 using json = nlohmann::json;
 using namespace std;
 
 int main(int argc, const char * argv[]) {
 	clock_t c_start = clock();
 	int option;
+	char str_readed[10];
+	sscanf("asd;\n", "%[^\n]", &str_readed);
+	cout << "asd;\n"<<endl;
+	cout << str_readed << endl;
 	option = validator(argc, argv);
 	if (!option) {
 		return 1;
@@ -24,7 +30,13 @@ int main(int argc, const char * argv[]) {
 		
 	}
 	for (size_t i = 1; (option == 3 || option == 6) && i < argc - (2 - option % 2 ); i++) {
-		final["SW"][getFileName(argv[i])] = "d" + to_string(i);
+		try {
+			json j = FormatearArchivo(argv[i],3);
+			final["SW"][getFileName(argv[i])] = j;
+		}
+		catch (exception&) {
+			return 2;
+		}
 	}
 	for (size_t i = 1; (option == 5 || option == 10) && i < argc - (2 - option % 2); i++) {
 		final["SW"][getFileName(argv[i])] = "v" + to_string(i);

@@ -80,7 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\toby\Desktop\Electron\CSV\csv_formats\unitsDeteccion;C:\Users\toby\Desktop\Electron\CSV\csv_formats\ext;C:\Users\toby\Desktop\Electron\CSV\csv_formats\utilities;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\toby\Desktop\Electron\CSV\csv_formats\numericalRepresentation;C:\Users\toby\Desktop\Electron\CSV\csv_formats\unitsDeteccion;C:\Users\toby\Desktop\Electron\CSV\csv_formats\ext;C:\Users\toby\Desktop\Electron\CSV\csv_formats\utilities;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\..\release</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -145,12 +145,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\numericalRepresentation\numericalRepresentation.cpp" />
     <ClCompile Include="..\..\unitsDeteccion\unitsDeteccion.cpp" />
     <ClCompile Include="..\..\utilities\utilities.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\ext\json.hpp" />
+    <ClInclude Include="..\..\numericalRepresentation\numericalRepresentation.h" />
     <ClInclude Include="..\..\unitsDeteccion\unitsDeteccion.h" />
     <ClInclude Include="..\..\utilities\utilities.h" />
   </ItemGroup>

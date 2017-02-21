@@ -1,14 +1,5 @@
 #include "unitsDeteccion.h"
-bool searchSubstring(std::string name) {
-	//std::string lower_name = name;
-	std::transform(name.begin(), name.end(), name.begin(), ::tolower);
-	for (size_t i = 0; i < NUM_NAMES; i++){
-		if (name.find(MINERALS_NAMES[i])!= std::string::npos) {
-			return true;
-		}
-	}
-	return false;
-}
+#include "utilities.h" 
 nlohmann::json unitDeteccion(const char * fileName) {
 	std::vector<std::string> types, units, columnName;
 	std::vector<std::vector<long>> arrayCounters;
@@ -44,13 +35,13 @@ nlohmann::json unitDeteccion(const char * fileName) {
 		percent_flag.push_back(true);
 		str = &line[c];
 	}
-	fgets(line, sizeof(line), f);
 	while (fgets(line, sizeof(line), f)) {
 		c = 0;
 		int k = 0;
+		sscanf(line, "%[^\n]", &line);
 		str = &line[c];
 		while (true) {
-			if (sscanf(str, "%i %n", &value, &numCharReaded)) {
+			if (sscanf(str, "%ld %n", &value, &numCharReaded)) {
 				if (str[numCharReaded] == ',' || str[numCharReaded + 1] == '\0') {
 					if (f_value < 0) {
 						arrayCounters[k][3]++;
@@ -65,7 +56,7 @@ nlohmann::json unitDeteccion(const char * fileName) {
 						arrayCounters[k][2]++;
 					}
 					else {
-						sscanf(&str[numCharReaded + 1], "%i %n", &value2, &numCharReaded2);
+						sscanf(&str[numCharReaded + 1], "%ld %n", &value2, &numCharReaded2);
 						if (value2==0) {
 							arrayCounters[k][0]++;
 							numCharReaded += numCharReaded2+1;
@@ -108,7 +99,7 @@ nlohmann::json unitDeteccion(const char * fileName) {
 					units.push_back("%");
 				}
 				else {
-					units.push_back("t/m^3");
+					units.push_back("g/cc");
 				}
 			}
 			else {

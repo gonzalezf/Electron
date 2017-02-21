@@ -1,4 +1,6 @@
 #include "utilities.h"
+#include <iostream>
+#include <algorithm>
 std::string getFileName(const char * fileName) {
 	std::string strFileName = fileName;
 	size_t aux;
@@ -81,4 +83,19 @@ int validator(int argc, const char * argv[]) {
 		}
 		return exist_optional * 5;
 	}
+}
+int searchSubstring(std::string name) {
+	//std::string lower_name = name;
+	std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+	for (size_t i = 0; i < NUM_NAMES; i++) {
+		if (name.find(MINERALS_NAMES[i]) != std::string::npos) {
+			if (i < 6) {
+				return 1;
+			}
+			else {
+				return 2;
+			}
+		}
+	}
+	return 0;
 }
