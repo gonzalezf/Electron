@@ -1,6 +1,9 @@
 #include "utilities.h"
+#include <iostream>
 #include "numericalRepresentation.h"
 #include "json.hpp"
+#include <stdlib.h>     /* atof */
+
 // for convenience
 using json = nlohmann::json;
 
@@ -12,11 +15,14 @@ std::string format(double f, int n){
 	int d = (int)::ceil(::log10(f < 0 ? -f : f)); /*digits before decimal point*/
 	double order = ::pow(10., n - d);
 	std::stringstream ss;
-	ss << std::fixed << std::setprecision(std::max(n - d, 0)) << round(f * order) / order;
-	return ss.str();
+	std::stringstream final_value;
+	ss <<std::fixed <<std::setprecision(std::max(n - d, 0))<< (f * order) / order;
+	final_value << std::setprecision(n - 1) << std::scientific << atof(ss.str().c_str()); // valor modificado con notacion cientifica y cifras signiticativas deseables de ver
+	return final_value.str();
 }
 
 json FormatearArchivo(const char* fileName, int cifras_significativas, bool convert) {
+
 	json j;
 	char *str, line[1024], str_readed[1024];
 	int c, numCharReaded, num_linea = 0, num_columnas = 0, columna_actual;
@@ -29,7 +35,7 @@ json FormatearArchivo(const char* fileName, int cifras_significativas, bool conv
 	std::vector<int> cant_datos_por_columna(100, 0);
 	FILE *fr, *fw;
 	//se genera el nombre de la copia del archivo
-	std::string copyName = "copia-" + getFileName(fileName);
+	std::string copyName = getFileName(fileName)+"-copia";
 	//se abren los archivos
 	fopen_s(&fr, fileName, "rt");
 	fopen_s(&fw, copyName.c_str(), "w+");
@@ -64,6 +70,8 @@ json FormatearArchivo(const char* fileName, int cifras_significativas, bool conv
 		typeColumn.push_back(searchSubstring(std::string(str_readed)));
 		str = &line[c];
 	}
+
+	//Estas variables son utiles para sacar datos estadisticos en una primera lectura, varianza y promedio.
 	sumatoria.resize(num_columnas - 3);
 	elevado.resize(num_columnas - 3);
 	magnitudes.resize(num_columnas - 3);
@@ -84,8 +92,9 @@ json FormatearArchivo(const char* fileName, int cifras_significativas, bool conv
 				//si toda la columna tiene que quedar en %, signigica que se debe modificar a %
 				if (convert && typeColumn[columna_actual - 1] == 1) {
 					//conversion de ppm a %
-					f_value = value / 10000.0;
+					f_value = value / 10000.0;					
 					fprintf(fw, "%s,", format(f_value, cifras_significativas));
+
 					break;
 				}
 				//si la columna debe ser trabajada pero no trasnformar la unidad

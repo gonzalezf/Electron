@@ -24,15 +24,15 @@ bool replaceSubString(std::string& str, const std::string& from, const std::stri
 }
 
 json AbreviarArchivo(string file_name, int cantidad_caracteres) {
-	int start_s = clock();
+
 	vector<string> header_names, abreviacion_header_temp, abreviacion_header;
 	json file;
 
-	std::ifstream  data(file_name + ".csv"); // Abrir archivo entrada
+	std::ifstream  data(file_name); // Abrir archivo entrada
 	std::string line;
 
 	if (!data) {
-		cout << "Error abriendo archivo de lectura "<< file_name + ".csv"<< endl;
+		cout << "Error abriendo archivo de lectura "<< file_name << endl;
 		json j;
 		throw std::exception();
 	}
@@ -61,9 +61,17 @@ json AbreviarArchivo(string file_name, int cantidad_caracteres) {
 	diccionario.insert(pair<string, string>("x", "xcentre"));
 	diccionario.insert(pair<string, string>("y", "ycentre"));
 	diccionario.insert(pair<string, string>("z", "zcentre"));
-
-
-
+	diccionario.insert(pair<string, string>("East", "Easting"));
+	diccionario.insert(pair<string, string>("North", "Northing"));
+	diccionario.insert(pair<string, string>("RockT", "Rock_type"));
+	diccionario.insert(pair<string, string>("E", "Este"));
+	diccionario.insert(pair<string, string>("N", "Norte"));
+	diccionario.insert(pair<string, string>("C", "Cota"));
+	diccionario.insert(pair<string, string>("LDC", "Ley de cobre"));
+	diccionario.insert(pair<string, string>("LDO", "Ley de oro"));
+	diccionario.insert(pair<string, string>("TRoca", "Tipo de roca"));
+	diccionario.insert(pair<string, string>("Declustering w", "Declustering weights"));
+	diccionario.insert(pair<string, string>("Declustering w", "Declustering weights"));
 
 
 	while (std::getline(data, line))
@@ -132,15 +140,7 @@ json AbreviarArchivo(string file_name, int cantidad_caracteres) {
 	file["headers"] = header_names;
 	file["abbrev"] = abreviacion_header;
 
-	int stop_s = clock();
-	std::cout << "time: " << (stop_s - start_s) / double(CLOCKS_PER_SEC) * 1000 << endl;
 
-	
-	
-	ofstream myfile;
-	myfile.open("ejemplojson2.txt");
-	myfile << file;
-	myfile.close();
 
 
 	return file;
