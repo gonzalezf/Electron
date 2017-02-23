@@ -1,33 +1,18 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   numericalRepresentation.cpp
-..\..\numericalRepresentation\numericalRepresentation.cpp(157): warning C4244: '=': conversión de 'double' a 'long'; posible pérdida de datos
+..\..\numericalRepresentation\numericalRepresentation.cpp(103): warning C4244: '=': conversión de 'double' a 'long'; posible pérdida de datos
 ..\..\numericalRepresentation\numericalRepresentation.cpp(54): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
 ..\..\numericalRepresentation\numericalRepresentation.cpp(73): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
-..\..\numericalRepresentation\numericalRepresentation.cpp(83): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
-..\..\numericalRepresentation\numericalRepresentation.cpp(110): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
-..\..\numericalRepresentation\numericalRepresentation.cpp(116): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
-..\..\numericalRepresentation\numericalRepresentation.cpp(141): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
-..\..\numericalRepresentation\numericalRepresentation.cpp(146): warning C4477: 'fprintf' : la cadena de formato '%f' requiere un argumento de tipo 'double', pero el argumento variádico 1 tiene el tipo 'long'
-..\..\numericalRepresentation\numericalRepresentation.cpp(165): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
-..\..\numericalRepresentation\numericalRepresentation.cpp(174): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
-..\..\numericalRepresentation\numericalRepresentation.cpp(181): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
-..\..\numericalRepresentation\numericalRepresentation.cpp(188): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
-..\..\numericalRepresentation\numericalRepresentation.cpp(194): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vea la declaración de 'sscanf'
+..\..\numericalRepresentation\numericalRepresentation.cpp(88): warning C4477: 'fprintf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'std::string'
+..\..\numericalRepresentation\numericalRepresentation.cpp(93): warning C4477: 'fprintf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'std::string'
+..\..\numericalRepresentation\numericalRepresentation.cpp(104): warning C4477: 'fprintf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'std::string'
+..\..\numericalRepresentation\numericalRepresentation.cpp(109): warning C4477: 'fprintf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'std::string'
   Generando código
-  6 of 1388 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  25 of 1607 functions ( 1.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    12 functions had inline decision re-evaluated but remain unchanged
+    66 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   main.vcxproj -> C:\Users\toby\Desktop\Electron\CSV\csv_formats\main\\..\release\main.exe
   main.vcxproj -> C:\Users\toby\Desktop\Electron\CSV\csv_formats\main\\..\release\main.pdb (Full PDB)

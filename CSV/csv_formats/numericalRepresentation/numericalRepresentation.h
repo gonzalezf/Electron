@@ -1,2 +1,2 @@
 #include "json.hpp"
-nlohmann::json FormatearArchivo(const char* fileName, int cifras_significativas);
+nlohmann::json FormatearArchivo(const char* fileName, int cifras_significativas, bool convert);

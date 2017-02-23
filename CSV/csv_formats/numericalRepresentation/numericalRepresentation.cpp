@@ -16,11 +16,11 @@ std::string format(double f, int n){
 	return ss.str();
 }
 
-json FormatearArchivo(const char* fileName, int cifras_significativas) {
+json FormatearArchivo(const char* fileName, int cifras_significativas, bool convert) {
 	json j;
 	char *str, line[1024], str_readed[1024];
-	int c, numCharReaded = 0, numCharReaded2, num_linea = 0, num_columnas = 0, columna_actual;
-	long value = 0, value2;
+	int c, numCharReaded, num_linea = 0, num_columnas = 0, columna_actual;
+	long value = 0, output;
 	double f_value;
 	std::vector <int> typeColumn;
 	std::vector <double> sumatoria(100, 0.0);
@@ -77,123 +77,54 @@ json FormatearArchivo(const char* fileName, int cifras_significativas) {
 		//se lee cada celda
 		while (true) {
 			columna_actual++;
-			//si la celda debe ser trabajada
-			if (typeColumn[columna_actual - 1]) {
-				//se comprueba que contenga un numero
-				if (sscanf(str, "%ld %n", &value, &numCharReaded)) {
-					//si todo lo que tiene la celda es entero
-					if (str[numCharReaded] == ',' || str[numCharReaded + 1] == '\0') {
-						//si es negativo no se trabaja
-						if (f_value < 0) {
-							fprintf(fw, "%d;", value);
-						}
-						//si no es negativo se debe trabajar
-						else {
-							//si toda la columna tiene que quedar en %, signigica que se debe modificar a %
-							if (typeColumn[columna_actual - 1] == 1) {
-								//conversion de ppm a %
-								f_value = value / 10000.0;
-//**********************************************falta aqui lo de las cifras y esas cosas
-								fprintf(fw, "%lf;", f_value);
-							}
-							//si la columna esta en ppm se copia igual al archivo de copia
-							else {
-//**********************************************falta aqui lo de las cifras y esas cosas
-								fprintf(fw, "%d;", value);
-							}
-						}
-					}
-					//si la celda no tiene solo un entero
-					else {
-						//si la celda tiene un entero y algun caracter se trabaja todo como un string
-						if (str[numCharReaded] != '.') {
-							sscanf(str, "%[^,] %n", &str_readed, &numCharReaded);
-							fprintf(fw, "%s;", str_readed);
-						}
-						//si la celda tiene un float
-						else {
-							//se lee lo que esta despues del punto
-							sscanf(&str[numCharReaded + 1], "%ld %n", &value2, &numCharReaded2);
-							//si solo tiene 0's despues del punto se toma como un entero 
-							if (value2 == 0) {
-								//si es negativo no se trabaja
-								if (f_value < 0) {
-									fprintf(fw, "%d;", value);
-								}
-								//si no es negativo se debe trabajar
-								else {
-									//si toda la columna tiene que quedar en %, signigica que se debe modificar a %
-									if (typeColumn[columna_actual - 1] == 1) {
-										//conversion de ppm a %
-										f_value = value / 10000.0;
-//**********************************************falta aqui lo de las cifras y esas cosas
-										fprintf(fw, "%lf;", f_value);
-									}
-									//si la columna esta en ppm se copia igual al archivo de copia
-									else {
-//**********************************************falta aqui lo de las cifras y esas cosas
-										fprintf(fw, "%d;", value);
-									}
-								}
-							}
-							//sino se puede leer como un float
-							else {
-								sscanf(str, "%lf %n", &f_value, &numCharReaded);
-								//si todo lo que hay en la celda es un float
-								if (str[numCharReaded] == ',' || str[numCharReaded + 1] == '\0') {
-									//si es negativo no se trabaja
-									if (f_value < 0) {
-										fprintf(fw, "%f;", value);
-									}
-									//si no es negativo se debe trabajar
-									else {
-										//si toda la columna tiene que quedar en % se copia tal cual al archivo
-										if (typeColumn[columna_actual - 1] == 1) {
-//**********************************************falta aqui lo de las cifras y esas cosas
-											fprintf(fw, "%f;", f_value);
-										}
-										//si no se debe pasar de % ppm 
-										else {
-											value = (double)(f_value*10000);
-//**********************************************falta aqui lo de las cifras y esas cosas
-											fprintf(fw, "%d;", value);
-										}
-									}
-								}
-								//si la celda tiene un float y algun caracter se trabaja todo como un string
-								else{
-									sscanf(str, "%[^,] %n", &str_readed, &numCharReaded);
-									fprintf(fw, "%s;", str_readed);
-								}
-							}
-						}
-					}
+			output = classifyType(str, &value, &f_value, str_readed, &numCharReaded);
+			switch (output){
+			//se leyo un int
+			case 0:
+				//si toda la columna tiene que quedar en %, signigica que se debe modificar a %
+				if (convert && typeColumn[columna_actual - 1] == 1) {
+					//conversion de ppm a %
+					f_value = value / 10000.0;
+					fprintf(fw, "%s,", format(f_value, cifras_significativas));
+					break;
 				}
-				//si no parte como un numero se lee y se trabaja como string 
-				else {
-					sscanf(str, "%[^,] %n", &str_readed, &numCharReaded);
-					fprintf(fw, "%s;", str_readed);
+				//si la columna debe ser trabajada pero no trasnformar la unidad
+				else if (typeColumn[columna_actual - 1] == 2) {
+					fprintf(fw, "%s,", format(f_value, cifras_significativas));
+					break;
 				}
-			}
-			//si no se debe modificar la celda
-			else {
-				//se compruba que el comienzo sea un numero
-				if (sscanf(str, "%ld %n", &value, &numCharReaded)) {
-					//si es un entero se lee y se escribe en el archivo de copia
-					if (str[numCharReaded] == ',' || str[numCharReaded + 1] == '\0') {
-						fprintf(fw, "%d;", value);
-					}
-					//si no es un entero se lee y escribe como string
-					else {
-						sscanf(str, "%[^,] %n", &str_readed, &numCharReaded);
-						fprintf(fw, "%s;", str_readed);
-					}
+				fprintf(fw, "%d,", value);
+				break;
+			//se leyo un float
+			case 1:
+				//si toda la columna tiene que quedar en ppm, signigica que se debe modificar a ppm
+				if (convert && typeColumn[columna_actual - 1] == 2) {
+					//conversion de % a ppm
+					value = (double)(f_value * 10000);
+					fprintf(fw, "%s,", format(f_value, cifras_significativas));
+					break;
 				}
-				//si no es un entero se lee y escribe como string
-				else {
-					sscanf(str, "%[^,] %n", &str_readed, &numCharReaded);
-					fprintf(fw, "%s;", str_readed);
+				//si la columna debe ser trabajada pero no trasnformar la unidad
+				else if (typeColumn[columna_actual - 1] == 1) {
+					fprintf(fw, "%s,", format(f_value, cifras_significativas));
+					break;
 				}
+				fprintf(fw, "%f,", f_value);
+				break;
+			//se leyo un string se copia igual
+			case 2:
+				if (numCharReaded == 0) {
+					fprintf(fw, ",");
+					break;
+				}
+				fprintf(fw, "%s,", str_readed);
+				
+				break;
+			//Se leyo un numero negativo, se copia igual
+			case 3:
+				fprintf(fw, "%d,", value);
+				break;
+
 			}
 			c += numCharReaded + 1;
 			if (line[c - 1] == '\0' || columna_actual == num_columnas) {
